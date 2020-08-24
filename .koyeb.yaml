@@ -1,0 +1,15 @@
+functions:
+  - name: "my-first-func"
+    image: "koyeb/app-aws-rekognition"
+    env:
+      AWS_ACCESS_KEY:
+        value_from_secret: awsaccesskey
+      AWS_SECRET_KEY:
+        value_from_secret: awssecretkey
+    events:
+      - cloudevent:
+          attributes:
+            event.source: "gateway"
+    volumes:
+      - name: myvol
+        store: myvol
